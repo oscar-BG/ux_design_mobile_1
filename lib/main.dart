@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'login',
       routes: {
         'login': ( _ ) => LoginScreen(),
+        'register': ( _ ) => RegisterScreen(),
         'home': ( _ ) => HomeScreen(),
       },
       theme: ThemeData.light().copyWith(

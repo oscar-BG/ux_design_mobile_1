@@ -32,7 +32,12 @@ class LoginScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 50),
-              const Text('Crear una nueva cuenta', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, 'register');
+                },
+                child: const Text('Crear una nueva cuenta', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
+              ),
               const SizedBox(height: 50),
             ],
           ),
