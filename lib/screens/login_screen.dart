@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 10),
-                    Text('Login', style: Theme.of(context).textTheme.headlineSmall,),
+                    Text('Inicio de Sesión', style: Theme.of(context).textTheme.headlineSmall,),
                     const SizedBox(height: 30),
                     
                     ChangeNotifierProvider(
@@ -98,14 +98,6 @@ class _LoginForm extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               elevation: 0,
               color: Colors.deepPurple,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                child:  Text(
-                  loginForm.isLoading
-                    ? 'Espere...'
-                    : 'Ingresar', 
-                  style: const TextStyle(color: Colors.white),)
-              ),
               onPressed: loginForm.isLoading ? null : () async {
 
                 FocusScope.of(context).unfocus();
@@ -118,7 +110,15 @@ class _LoginForm extends StatelessWidget {
                 loginForm.isLoading = false;
 
                 Navigator.pushReplacementNamed(context, 'home');
-              }
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                child:  Text(
+                  loginForm.isLoading
+                    ? 'Espere...'
+                    : 'Ingresar', 
+                  style: const TextStyle(color: Colors.white),)
+              ),
             )
           ],
         ),
