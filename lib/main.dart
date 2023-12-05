@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         'register': ( _ ) => RegisterScreen(),
         'home': ( _ ) => HomeScreen(),
       },
-      theme: ThemeData.light().copyWith(
+      theme: ThemeData.light(useMaterial3: true).copyWith(
         scaffoldBackgroundColor: Colors.grey[300]
       ),
     );

@@ -11,56 +11,91 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  static const TextStyle optionStyle = TextStyle(fontSize:30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Inicio',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Chat',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Configuración',
-      style: optionStyle,
-    )
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Center(child: Text('Inicio')),
+        backgroundColor: Colors.deepPurple,
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Incio'
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        selectedIndex: _selectedIndex,
+        // backgroundColor: Colors.deepPurple.withOpacity(0.8),
+
+        destinations: const  <Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home_filled),
+            icon: Icon(Icons.home_outlined
+            
+            
+            ),
+            label: 'Inicio',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_outlined),
-            label: 'Chat'
+          
+          NavigationDestination(
+            selectedIcon: Icon(Icons.notifications),
+            icon: Badge(child: Icon(Icons.notifications_none),),
+            label: 'Notificaciones',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
+            selectedIcon: Icon(Icons.settings),
             icon: Icon(Icons.settings_outlined),
-            label: 'Configuración'
-          ),
+            label: 'Configuración',
+          )
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
-      )
+      ),
+      body: <Widget>[
+        const Card(
+          shadowColor: Colors.transparent,
+          margin:  EdgeInsets.all(8.0),
+          child: SizedBox.expand(
+            child: Center(
+              child: Text(
+                'Home page',
+              ),
+            ),
+          ),
+        ),
+
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.notifications_sharp),
+                  title: Text('Notification 1'),
+                  subtitle: Text('This is a notification'),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.notifications_sharp),
+                  title: Text('Notification 2'),
+                  subtitle: Text('This is a notification'),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        const Card(
+          shadowColor: Colors.transparent,
+          margin:  EdgeInsets.all(8.0),
+          child: SizedBox.expand(
+            child: Center(
+              child: Text(
+                'Configuración',
+              ),
+            ),
+          ),
+        ),
+      ][_selectedIndex]
     );
   }
 }
