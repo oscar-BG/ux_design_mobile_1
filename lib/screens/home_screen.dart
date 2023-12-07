@@ -62,30 +62,46 @@ class _HomeScreenState extends State<HomeScreen> {
       body: <Widget>[
 
         // Pagina de inicio
-         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children:  <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album),
-                  title: Text('The Enchanted Nightingale'),
-                  subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    TextButton(
-                      child: const Text('PLAY'),
-                      onPressed: () {/* ... */},
-                    )
-                  ],
-                )
-              ],
+        Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 10.0,),
+            const Card(
+              color: Colors.blue,
+              elevation: 5,
+              child: ListTile(
+                contentPadding: EdgeInsets.all(16.0),
+                leading: Icon(Icons.home, size: 50,),
+                title: Text('Inicio'),
+                subtitle: Text('Esta es la pagina de inicio'),
+              )
             ),
-          ),
+            const SizedBox(height: 16.0,),
+            const Card(
+              color: Colors.green,
+              elevation: 5,
+              child: ListTile(
+                contentPadding: EdgeInsets.all(16.0),
+                leading: Icon(Icons.insights_sharp, size: 50,),
+                title: Text('Servicios'),
+                subtitle: Text('Esta es la pagina de servicios'),
+              )
+            ),
+            const SizedBox(height: 16.0,),
+            Card(
+              color: Colors.blue[600],
+              elevation: 5,
+              child: const ListTile(
+                contentPadding: EdgeInsets.all(16.0),
+                leading: Icon(Icons.calendar_month, size: 50,),
+                title: Text('Calendario'),
+                subtitle: Text('Esta es la pagina de calendario'),
+              )
+            ),
+          ],
         ),
+       ),
 
         // Pagina de notificaciones
         const Padding(
@@ -151,8 +167,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           )
         )
-
-
       ][_selectedIndex]
     );
   }
